@@ -3,77 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link rel="stylesheet" href="./style.css">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header id="header">
-        <a href="#" class="logo">AAKASH SR</a>
-        <!-- Menu Button -->
-        <div class="menu-toggle" id="menuToggle">
-            <span>Menu</span>
+    <!-- Sign-Up Page -->
+    <div id="signup-page" class="auth-container">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username">
+        <input type="password" id="signup-password" placeholder="Password">
+        <button onclick="signup()">Sign Up</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Log In</a></p>
+        <p id="signup-error" class="error-message"></p>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="auth-container" style="display: none;">
+        <h2>Log In</h2>
+        <input type="text" id="login-username" placeholder="Username">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Log In</button>
+        <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+        <p id="login-error" class="error-message"></p>
+    </div>
+
+    <!-- Profile Page (Hidden by Default) -->
+    <div id="profile-page" class="auth-container" style="display: none;">
+        <h2>Set Profile Picture</h2>
+        <input type="file" id="profile-picture" accept="image/*">
+        <button onclick="saveProfilePicture()">Save</button>
+    </div>
+
+    <!-- Chat Page (Hidden by Default) -->
+    <div id="chat-page" class="chat-container" style="display: none;">
+        <div class="profile-section">
+            <img id="profile-pic" src="" alt="Profile Picture" class="profile-pic">
+            <!-- Verified Tick SVG -->
+            <span id="verified-tick" class="verified-tick" style="display: none;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="#0095f6">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+            </span>
         </div>
-        <!-- Navigation Links -->
-        <ul id="navLinks">
-            <li><a href="#" id="homeBtn" class="active">Home</a></li>
-            <li><a href="#" id="aboutBtn">About</a></li>
-            <li><a href="#" id="destinationBtn">Destination</a></li>
-            <li><a href="#" id="contactBtn">Contact</a></li>
-            <li><a href="#" id="journeyBtn">Journey</a></li>
-            <li><a href="#" id="loginBtn">Login</a></li>
-        </ul>
-    </header>
-
-    <section>
-        <h2 id="text"><span>Welcome this is</span><br>Soundarrajan</h2>
-        <img src="https://user-images.githubusercontent.com/65358991/170092504-132fa547-5ced-40e5-ab64-ded61518fac2.png" id="bird1">
-        <img src="https://user-images.githubusercontent.com/65358991/170092542-9747edcc-fb51-4e21-aaf5-a61119393618.png" id="bird2">
-        <img src="https://user-images.githubusercontent.com/65358991/170092559-883fe071-eb4f-4610-8c8b-a037d061c617.png" id="forest">
-        <img src="https://user-images.githubusercontent.com/65358991/170092605-eada6510-d556-45cc-b7fa-9e4d1d258d26.png" id="rocks">
-        <img src="https://user-images.githubusercontent.com/65358991/170092616-5a70c4af-2eed-496f-bde9-b5fcc7142a31.png" id="water">
-    </section>
-
-    <div class="sec" id="contentSection">
-        <!-- Content will be dynamically added here -->
-    </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Admin Login</h2>
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Upload Button (Visible after login) -->
-    <button id="uploadPhotoBtn" class="upload-btn">Upload Photo</button>
-
-    <!-- Upload Photo Section -->
-    <div id="uploadSection" class="upload-section">
-        <span class="close-upload">&times;</span>
-        <h2>Upload Photo</h2>
-        <form id="uploadForm">
-            <input type="file" id="photoUpload" accept="image/*" required>
-            <textarea id="photoDescription" placeholder="Describe the photo..." required></textarea>
-            <button type="submit">Upload</button>
-        </form>
-    </div>
-
-    <!-- Journey Section (Visible only when "Journey" is clicked) -->
-    <div class="journey-section" id="journeySection">
-        <h2>My Journey</h2>
-        <div class="container" id="publicPhotos">
-            <!-- Photos will be dynamically added here -->
+        <div id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+            <button onclick="clearChat()">Clear Chat</button>
         </div>
     </div>
-
-    <script src="./script.js"></script>
+    <p>© 2025 / AAKASH</p>
+    <script src="script.js"></script>
 </body>
 </html>
